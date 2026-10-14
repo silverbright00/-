@@ -1,0 +1,20 @@
+name: example
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check Tickets
+        uses: mooyoul/melon-ticket-actions@v1.1.0
+        with:
+          product-id: 204755
+          schedule-id: 100001
+          seat-id: 1_0
+          slack-incoming-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          message: '달려달려~'
